@@ -1,0 +1,30 @@
+version: "3"
+services:
+  a:
+    image: mynginx
+    networks:
+      - frontend
+      - backend
+    container_name: astondomain
+    volumes:
+      - datastore
+  b:
+    image: mynginx
+    networks:
+      - frontend
+  c:
+    image: mynginx
+    networks:
+      backend:
+        aliases:
+          - toto
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+
+volumes:
+  datastore:
+    driver: local
