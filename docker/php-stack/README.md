@@ -32,12 +32,16 @@ docker run --name website -p 8080:80 -d --network=aston_network wordpress
 docker run --name myadmin --network=aston_network -d -e PMA_HOST=mysqldb -p "192.168.99.100:8000":80 phpmyadmin/phpmyadmin
 ```
 
+## Installation de PHP
+
 ```sh
 docker run -d --name php_server \
     --network=aston_network \
     -v $(pwd)/www:/var/www/html \
     nanoninja/php-fpm
 ```
+
+## Installation de NGINX
 
 ```sh
 docker run -d --name nginx_server \
@@ -48,5 +52,9 @@ docker run -d --name nginx_server \
     nginx
 ```
 
+## Tests
+
+```sh
 docker run -p 6060 nginx sh
 docker cp 31ac9f45:/etc/nginx/conf.d/default.conf ./html
+```
