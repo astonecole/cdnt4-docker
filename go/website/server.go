@@ -1,7 +1,6 @@
 package main
 
 import (
-	"aston"
 	"encoding/json"
 	"flag"
 	"fmt"
@@ -35,8 +34,6 @@ func logger(next http.Handler) http.Handler {
 
 func main() {
 	flag.Parse()
-
-	fmt.Println(aston.Greeting("toto"))
 
 	m := http.NewServeMux()
 	m.HandleFunc("/", home)
